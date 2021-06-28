@@ -1,0 +1,97 @@
+<section class="propety-binding">
+
+<article>
+    <h3 id="titulo-um">Interpolation / Interpolação</h3>
+    <p>String renderizada com interpolação: {{ url }}</p>
+    <p>Resultado de 1 + 1 = {{ 1 + 1 }}</p>
+    <p>Resultado de 1 + 1 não é {{ 1 + 1 + getValor() }}</p>
+    <p> Curso de Angular e gosto do curso: {{ cursoAngular && getCurtirCurso() }}</p>
+</article>
+
+<article>
+    <h3>Property Binding</h3>
+    <img src="{{ urlImagem }}"> <!--implícito-->
+    <img [src]="urlImagem"> <!--explícito | não precisa usar as chaves, pois os colchetes são interpretados como databinding-->
+    <img bind-src="urlImagem">
+</article>
+
+<article>
+    <h3>Class and Style Binding</h3>
+    <div>
+        <p>Selecione uma classe:</p>
+        <select #classe (change)="0">
+            <option disabled selected value>Selecione uma das opções</option>
+            <option value="alert-success">Sucesso</option>
+            <option value="alert-info">Informação</option>
+            <option value="alert-warning">Cuidado</option>
+            <option value="alert-danger">Erro</option>
+        </select>
+        <!--Criando uma variável local para acessar o que foi selecionado (#classe) | E para escutar o evento, usa-se a propriedade change-->
+
+        <br><br>
+
+        <div class="alert {{ classe.value }}" role="alert">
+            Texto colorido conforme valor do combobox
+        </div>
+
+        <!--style binding-->
+        <!--Se o selecionado for o erro, mostre o bloco, caso contrário não é para a aparecer - none -->
+        <div>
+            <div class="alert alert-danger" role="alert" [style.display]="classe.value == 'alert-danger' ?'block' : 'none'">Esse texto aparecerá somente em caso de erro</div>
+        </div>
+        
+        <!--property binding com classes-->
+        <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'">Sucesso</div>
+        <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'">Informação</div>
+        <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">Cuidado</div>
+        <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">Erro</div>
+   
+    </div>
+</article>
+</section>
+
+<section class="event-binding">
+    <article>
+        <h3>Event Binding</h3>
+        <div>
+            <button (click)="botaoClicado()" class="btn btn-primary">Clique aqui!</button>
+
+            <br><br>
+
+            <!--onKey é quando se acaba de dar um clique em uma tecla | para fazer referência ao evento, usa-se $ | keyUp.enter - salvar o conteúdo quando o enter for pressionado | evento blur = quando o campo perde o foco | #nome_variavel_local-->
+            <input type="text" (keyup)="onKeyUp($event)" (keyup.enter)="salvarValor(campoInput.value)" (blur)="salvarValor(campoInput.value)" #campoInput>
+
+            <h5>Valor Atual: {{ valorAtual }}</h5>
+            <h5>Valor Salvo: {{ valorSalvo }}</h5>
+
+            <br>
+            <!--highlight só irá aplicar a classe, se isMouseOver for true-->
+            <span (mouseover)="onMouseOverOut()" (onmouseout)="onMouseOverOut()" [class.highlight]="isMouseOver">Passe o mouse sobre mim</span>
+        </div>
+    </article>
+</section>
+
+<section class="two-way-binding">
+    <article>
+        <h3>Two-Way data binding</h3>
+        <div>
+            <!--(input) é um método de evento do input-->
+            <input type="text" 
+                [value]="nome"
+                (input)="nome = inputNomeValor.value"
+                #inputNomeValor
+            >
+            <p>Você digitou: {{ nome }}</p>
+
+            <!--Exemplo de quando for para formulário
+            ngModel é uma representação de uma entidade, que pode ser de um campo simples como o input e até mesmo de um objeto-->
+            <input type="text" 
+                [ngModel]="nome"
+                (ngModelChange)="nome = $event"
+            />
+
+            <!--Forma simplificada de fazer to-way data bind: [bind de propriedade] (bind de event)-->
+            <input type="text" [(ngModel)]="nome">
+        </div>
+    </article>
+</section>

@@ -1,0 +1,61 @@
+> Para os components de um módulo funcional, serem lidos pelo módulo principal, exports o módulo funcional e o import no módulo raíz.
+> Tudo que estiver declarado no exports do módulo funcional, consegue-se usar em qualquer component declarado em declarations no módulo raíz. 
+
+> Serviços
+ - Normalmente quando se faz uma listagem de dados, tem de ser de forma dinâmica, pois os dados vêm de um servidor
+ - É uma má prática deixar o código para, por exemplo, fazer a chamada do servidor, dentro do component
+ - O código que vai dentro do component vai ser responsável pela lógica que vai mostrar os dados, e interagir com o usuário (ex. onClick)
+
+ > Plugins para baixar:
+ => Angular 2, 4, and upcoming latest TypeScript
+ => Angular Snnipets
+ => HTML Snnipets
+
+ ---------------------------------------------------------------------------------------------------------------
+
+> Propety Binding + interpolação 
+- É uma forma de associar informações que estão no component para o template e vice-versa. Ou seja, se se tem uma variável, atributo ou método que retorna um valor, consegue-se mostrar essas informações em um template. E quando um usuário interage com o HTML, nesse caso serão disparados alguns eventos, e eles poderão ser escutados em um component, o qual realizará uma lógica correspondente.
+- Existem 4 formas de fazer o databind 
+    1. Interpolation 
+        {{ valor }}
+        Pega o valor de um atributo ou método e se consegue ter a saída dessa informação no template.
+    
+    2. Propety Binding (associação de propriedade) 
+        [propriedade]="valor"
+        Não precisa usar as chaves, pois os colchetes são interpretados como databinding
+        Quando não existe uma propriedade no elemento usa-se [attr.colspan]
+    
+    e no contrário...
+   
+    3. (evento)="handler"
+        Quando se escuta o evento no template (ex.: clique no botão, foco no input)
+    
+    4. To-way DataBing
+        [(ngModel)]="propriedade"    
+        Aqui se consegue manter o template e o component atualizados ao mesmo tempo, e isso é útil ao trabalhar com formulários
+
+- O angular consegue resolver expressões (matemática, booleana) dentro da interpolação também.
+
+> Class e Style binding (Binding de classes e estilos)
+- Tambem são uma forma de property binding, no lugar de trabalhar com variáveis ou expressões, se trabalha com css
+
+>>> Para utilizar o css na aplicação, pode-se usar o bootstrap
+npm install ng2-bootstrap bootstrap --save
+e no arquivo angular.json, em styles import "../node_modules/bootstrap/dist/css/bootstrap.min.css" <<<
+
+> Event Binding
+- No property binding se usa () ao invés de []
+- Também é possível fazer um style in line, como se faz com o template:
+   ex. styles: [
+            `
+                .highlight {
+                    background-color: yellow;
+                    font-weight: bold;
+                }
+            `
+        ]
+
+> To-Way data Binding
+- Bind bidirecional
+- Atualizando o template e o componente ao mesmo tempo
+- Para fazer esse uso simultâneo, é necessário usar binding de eventos + propriedades

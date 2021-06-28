@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+/*Quando declarado aqui, o estilo estará disponível para todos os componentes*/
+section {
+   padding-top: 30px;
+   padding-bottom: 10px;
+    background-color: gray;
+}
+
+article {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family:monospace;
+    font-size: 17px;
+    color: aliceblue;
+}
+
+.event-binding {
+    text-align: center;
+}

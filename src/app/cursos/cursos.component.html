@@ -1,1 +1,11 @@
-<p>cursos works!</p>
+<p>Lista de cursos do portal http://loiane.training {{ nomePortal }}</p>
+
+<!--Como o curso-detalhe está declarado dentro do cursos.module, pode-se usá-lo aqui (cursos.component). Mas como ele não está em export, não se pode usá-lo fora daqui, então fica como um atributo privado-->
+<app-curso-detalhe></app-curso-detalhe>
+
+<ul>
+    <li *ngFor="let curso of cursos"> <!--Diretiva ngFor-->
+        {{ curso }}
+    </li>
+</ul>
+

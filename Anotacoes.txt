@@ -59,3 +59,33 @@ e no arquivo angular.json, em styles import "../node_modules/bootstrap/dist/css/
 - Bind bidirecional
 - Atualizando o template e o componente ao mesmo tempo
 - Para fazer esse uso simultâneo, é necessário usar binding de eventos + propriedades
+- Quando se está trabalhando com to-way data binding, usa-se o ngModel, que é uma diretiva que pertence ao módulo formsModule, o qual já vem automaticamente importado no app.module. Então se o component estiver declarado no app module, não precisa importar de novo.
+
+>>> Funcionamento angular
+-> Quando a pasta está no contexto app, e se quer usar o component em outro componente funcional, se declara o component em declarations em NgModule, e importa o módulo do componente.
+-- OBS.: E para o component ser usado/importado, seu módulo terá de ser exportado: exports 
+E quando for usar propriedades do formsModule, lembrar de importá-lo <<<
+
+
+~
+Quando der erro de "não reconhecido por NgModule ou input, lembrar de colocar o FormsModule/HTTPModule dentro do imports em NgModule, ou no imports de onde ele for usado"
+~
+________________________
+| COMPONENT SE DECLARA |
+| MÓDULO SE IMPORTA    |
+|______________________|
+
+//está recebendo um valor do component pai para o component filho
+@Input() 
+
+//expondo valores através de um evento
+@Output
+
+> Ciclo de vida do component - Life Cycle Hooks
+REVER AULA #15 E FAZER ANOTAÇÕES
+- Métodos:
+-> ngOnInit é um dos métodos mais usados, porque é geralmente dentro desse método que se faz a chamada para o servidor, pra obter os dados e mostrar no template
+-> ngOnChanges também é um dos mais importantes, principalmente quando se trabalha com input properties, e esse muda
+-> E o ngOnDestroy, que serve para liberar a memória, quando se está trabalhando com http e observables, e se destrói a inscrição que se faz no observable quando o component for destruído
+
+=== Quando tem o input property usa-se o ngOnChanges, se não tem usa-se o ngOnInit

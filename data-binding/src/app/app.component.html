@@ -1,1 +1,10 @@
 <app-data-binding></app-data-binding>
+
+<!--Quando o valor mudar, o valor do input property vai mudar também-->
+<section>
+    <div id="app-conteudo">
+        <app-ciclo [valorInicial]="valor" *ngIf="!deletarCiclo"></app-ciclo>
+        <button (click)="mudarValor()">Mudar valor</button> 
+        <button (click)="destruirCiclo()">Deletar</button>
+    </div>
+</section>

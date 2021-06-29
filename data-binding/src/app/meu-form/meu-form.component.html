@@ -1,0 +1,28 @@
+<section class="two-way-binding">
+    <article>
+        <h3>Two-Way data binding</h3>
+        <div>
+            <!--(input) é um método de evento do input-->
+            <input type="text" [value]="nome" (input)="nome = inputNomeValor.value" #inputNomeValor/>
+            
+
+            <!--Exemplo de quando for para formulário
+            ngModel é uma representação de uma entidade, que pode ser de um campo simples como o input e até mesmo de um objeto-->
+            <input type="text" [ngModel]="nome" (ngModelChange)="nome = $event"/>
+
+            <!--Forma simplificada de fazer to-way data bind: [bind de propriedade] (bind de event)-->
+            <input type="text" [(ngModel)]="nome"/>
+
+            <p>Você digitou: {{ nome }}</p>
+        </div>
+
+        <br>
+        
+        <div>
+            <!--Lembrar da sintaxe banana da caixa-->
+            <input type="text" [(ngModel)]="pessoa.nome"/>
+            <input type="text" [(ngModel)]="pessoa.idade"/>
+            <p>Nome: {{ pessoa.nome }} | Idade: {{ pessoa.idade }}</p>
+        </div>
+    </article>
+</section>

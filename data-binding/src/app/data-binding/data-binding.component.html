@@ -1,5 +1,4 @@
 <section class="propety-binding">
-
 <article>
     <h3 id="titulo-um">Interpolation / Interpolação</h3>
     <p>String renderizada com interpolação: {{ url }}</p>
@@ -71,27 +70,15 @@
     </article>
 </section>
 
-<section class="two-way-binding">
+<app-meu-form></app-meu-form>
+
+<section class="input-output-properties">
     <article>
-        <h3>Two-Way data binding</h3>
-        <div>
-            <!--(input) é um método de evento do input-->
-            <input type="text" 
-                [value]="nome"
-                (input)="nome = inputNomeValor.value"
-                #inputNomeValor
-            >
-            <p>Você digitou: {{ nome }}</p>
+        <h3>Input/Output Properties</h3>
+        <!--Serve para passar uma variável do component | Como está sendo utilizada uma variável, lembrar de fazer o property binding [ ]-->
+        <app-curso [nome]="nomeDoCurso"></app-curso> 
 
-            <!--Exemplo de quando for para formulário
-            ngModel é uma representação de uma entidade, que pode ser de um campo simples como o input e até mesmo de um objeto-->
-            <input type="text" 
-                [ngModel]="nome"
-                (ngModelChange)="nome = $event"
-            />
-
-            <!--Forma simplificada de fazer to-way data bind: [bind de propriedade] (bind de event)-->
-            <input type="text" [(ngModel)]="nome">
-        </div>
+        <contador [valor]="valorInicial" (mudouValor)="onMudouValor($event)"></contador>
+        <!--Ex.: Pode-se passar o valor literal valor="10" ou usando o property bind para passar o valor por uma variável [valor]="valorInicial"-->
     </article>
 </section>

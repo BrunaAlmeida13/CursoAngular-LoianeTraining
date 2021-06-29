@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input  } from '@angular/core';
 
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
 
   url: string = 'http://loiane.com'
   cursoAngular: boolean = true
@@ -13,12 +13,15 @@ export class DataBindingComponent implements OnInit {
   valorAtual: string = ''
   valorSalvo: String = ''
   isMouseOver: boolean = false
-  nome: string = 'abc'
+  nomeDoCurso: string = 'Angular'
+  valorInicial: number = 15
 
   constructor() { }
 
-  ngOnInit(): void {
+  onMudouValor(evento: any) {
+    console.log(evento.novoValor)
   }
+
   //Como esse arquivo tem extensão .ts, não precisa da palavra reservada function
   getValor() {
     return 1

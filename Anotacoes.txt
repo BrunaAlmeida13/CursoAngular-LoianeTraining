@@ -89,3 +89,15 @@ REVER AULA #15 E FAZER ANOTAÇÕES
 -> E o ngOnDestroy, que serve para liberar a memória, quando se está trabalhando com http e observables, e se destrói a inscrição que se faz no observable quando o component for destruído
 
 === Quando tem o input property usa-se o ngOnChanges, se não tem usa-se o ngOnInit
+
+-----------------------------------------------------
+AULA #18 7:05
+
+> Ferramentas do Angular CLI
+* ng lint
+    Verfica se o projeto está de acordo com as boas práticas do style guide
+* ng test
+    Executa os testes jasmins, que são os testes unitários
+* ng e2e  
+    Teste end to end com protector
+

@@ -99,5 +99,162 @@ AULA #18 7:05
 * ng test
     Executa os testes jasmins, que são os testes unitários
 * ng e2e  
-    Teste end to end com protector
+    Teste end to end com Protractor
 
+----------------------------------------------
+>Jasmine
+   - É uma biblioteca de bdd, ou seja, para escrever testes orientados a comportamento.
+   - Aqui também pode usar o tdd
+   - Olhando a documentação, contém códigos modelos para realizar os testes
+* ng test
+    Após realizar os testes, ele abre o navegador com o Karma, que é uma ferramenta de testes que permite executar cada linha de código do teste em diferentes browser (assim, pode-se emular e verificar a compatibilidade cross-browser da aplicação)
+
+> Protractor
+    - Ferramenta de teste para ferramenta de integração
+
+> Para que serve o Angular CLI
+    - Criar toda a estrutura do projeto
+    - Gera página HTML inicial, arquivos TypeScript iniciais, arquivos CSS e arquivos de teste unitários
+    - Cria arquivo package.json com todas as dependências do Angular 2
+    - Instala todas as dependências do node (npm install)
+    - Configura o Karma para executar os testes unitários com Jasmine
+    - Configura Protractor para executar os testes end-to-end (e2e)
+    - Inicializa um repositório git no projeto e faz commit inicial
+    - Cria todos arquivos necessários para fazer o build da aplicação para produção
+
+> Estrutura do package.json
+    - Dependencies x DevDependencies
+        -> Dependencies
+            Dependências necessárias para executar a aplicação
+        -> DevDependencies 
+            Dependências necessárias para desenvolver a aplicação (não necessárias após o build de produção)
+    -- Dependencies
+        -> @angular/core 
+            - pacote principal do framework Angular 2
+            - Contém decorators e metadados, Component, Dirctive, injeção de dependência e os hooks de ciclo de vida do Component.
+        -> @angular/common
+            - Serviços, pipes e diretivas comuns (ex. ngIf, ngFor) fornecidas pelo time dev do angular
+        -> @angular/compiler
+            - Template de compilação do angular.
+            - Entende o código dos templates e converte em código que faz a app ser executada e renderizada.
+            - Desenvolvedores não interagem com esse pacote diretamente (apenas usa-se o seu código)
+        -> @angular/forms
+            - Contpem todo o código para construção de formulários do angular 2
+        -> @angular/plataform-browser
+            - Relacionado à manipulação do DOM
+            - Contém todo o código relacionado ao DOM e ao browser, especialmente as partes que ajudam a renderizar o DOM
+            - Esse pacote também contém o método para fazer o bootstrap da aplicação para buids de produção que pré-compila os templates
+        -> @angular/plataform-browser-dynamic
+            - Contém os Providers e o método para iniciar as aplicações que compilam templates no lado cliente
+            - Não usa compilação offline
+            - Usada para fazer bootstrap durante o desenvolvimento e exemplos plunker
+        -> @angular/http
+            - Fornece o cliente HTTP
+            - É o que permite que se faça chamadas AJAX ou REST pra um servidor
+        -> @angular/router
+            - Classe de roteamento
+            - Pra mudar de uma página ou não, para carregar de um template para outro, etc
+    -- Dependencies Polyfills (bibliotecas auxiliares)
+        -> core-js
+            - biblioteca que permite compatibilidade de engines JS antigas com a especificação do ES 2015, ou seja, emula as funcionalidades do ES 2015 (ES6) e ES 7 em browsers que suportam somente ES5
+        -> reflect-metadata
+            - Dependência compartilhada entre o Angular e o compilador TypeScript. Permite o uso de decorators no código (annotations)
+            - Permite ao dev fazer upgrade no TS sem precisar de fazer upgrade no Angular. E esse é o motivo dessa ser uma dependência da aplicação e não do Angular
+        -> rxjs
+            - Extensão para a especificação dos Observables (programação assíncrona) 
+            - Reactive extensions for JS
+            - São usadas principalmente na hora de fazer integração com o servidor, chamadas AJAX
+        -> ts-helpers
+            - Biblioteca auxiliar que permite otimização de código TS quando o mesmo é compilado para ES 5
+            - Ex. tem momentos em que o código é compilado e é duplicado, ela tira essas duplicações
+        -> zone.js
+            - Extensão (plugins) útil para tarefas assíncronas (chamadas de Zones)   
+    -- DevDependencies 
+        -> dependências do Jasmine
+        -> dependências do Protractor
+        -> dependências do Karma
+        etc.
+
+> Gerando o build de produção
+    - Onde vai ser feito o deploy (colocar no ar alguma aplicação que teve seu desenvolvimento concluído) pros usuários poderem usar a aplicação
+    - Build de dev
+        * ng build | ng build --dev
+        -> Útil para integrar o código do Angular 2 com o projeto de backend (PHP, Java, .Net, Python,Ruby, etc)
+        -> Código possível de debugar
+        -> Arquivo main.bundle.js contém todo o código do projeto + css + HTML (legível)
+    - Build de produção
+        * ng build | ng build --prod
+        -> Obfusca e minifica o código JS da aplicação
+            (minifica para diminuir o tamanho do arquivo)
+        -> css e templates HTML já minificados e incluídos em main.bundle.js
+            A aplicação sempre será atualizada, toda vez que tiver uma nova versão
+    ... instalando HTTP Server
+        npm install http-server -g
+        - Serve para testar código simples, sem a necessidade de ter um servidor a parte
+
+> Instalando bibliotecas externas
+    -> bootstrap, jquery e tether
+        * npm install --save bootstrap@next
+        --save: serve para salvar nas DevDependencies no package.json
+        Passo1. Primeiro se escolhe qual versão do bootstrap/dist/css/bootstrap.css ou bootstrap.min.css (min de versão minificada)
+          Também se escolhe o arquivo bootstrap/dist/bootstrap.js ou bootstrap.min.js 
+        ^ Dois arquivos necesários para importar no projeto ^
+        Passo2. Depois também vai na pasta bootstrap/dist/jquery/dist/jquery.js ou jquery.min.js
+        Passo3. E bootstrap/dist/tether/dist
+            (Tether é uma biblioteca que vai fazer o meio de campo entre jquery e bootstrap, pro código que será usado na aplicação
+            )
+    
+    >>> dentro de angular-cli.json tem-se "scripts" e "styles", que é onde será colocado os estilos css e os scripts de js externo, e isso é para não ter que colocar imports dentro do index.html <<<
+    
+    -> Materialize 
+
+> Diretivas
+    - São uma forma de passar instruções para o template 
+    -- ngFor
+    <ul>
+        <li *ngFor="let curso of cursos">{{ curso }}</li>
+    </ul>
+    - Components são diretivas com template
+    "Crie um componente do Tipo (classe) especificado e renderize a view (template) desse componente nesse lugar"
+    - Há dois tipos de diretivas:
+        >> Estruturais
+            ~ Interagem com a view e modificam a estrutura do DOM e/ou código HTML
+            ~ Ex. ngFor e ngIf, ngSwitchCase
+        >> De Atributos
+            ~ Interagem com o elemento em que foram aplicadas
+            ~ Ex. ng-classe, ng-style    
+
+*ngIf
+    - Não existe else, então o que se faz é negar as condições para ir formando o necessário
+    - Exemplo em: projeto diretivas/diretiva-ngIf
+
+>> NGIF X HIDDEN
+    [hidden]="" 
+        É recomendado o uso para árvore de elementos pequena
+        É menos seguro, pois ainda assim mostra os elementos pelo console do navegador
+    *ngIf=""
+        É recomendado para árvore de elementos grades (muitas heranças)
+        É mais seguro porque ele destrói o elemento que não for para ser mostrado
+<<
+
+*ngSwitch, *ngSwitchCase
+
+> Conhecendo o * das diretivas
+    Por trás do *, o angular cria um template, utiliza o property binding da diretiva e mostra o que se pede
+    ex.1:
+        <template [ngIf]="mostrarCursos">
+            <div>Lista de cursos aqui</div>
+        </template>    
+        ou
+        <div template="ngIf mostrarCursos">
+            Lista de cursos aqui
+        </div>    
+    ex.2:
+        <li template="ngFor let curso of cursos, let i = index">    
+            {{ i + 1 }} - {{ curso }}
+        </li>
+        ou
+        <template ngFor [ngForOf]="cursos" let-curso let-i="index">
+            <li>{{ i + 1 }} - {{ curso }}</li>
+        </template> 
+           

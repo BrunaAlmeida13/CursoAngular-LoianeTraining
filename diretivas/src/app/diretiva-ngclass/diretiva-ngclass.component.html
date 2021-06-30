@@ -1,0 +1,13 @@
+<h1>
+    <i class="glyphicon" [class.glyphicon-star-empty]="!meuFavorito" [class.glyphicon-star]="meuFavorito" (click)="onClick()"></i>
+</h1>
+
+<!--
+    Quando se tem apenas um class binding, a primeira opção é boa, mas quando se tem 2 ou mais, se torna um código de difícil leitura, então se usa a diretiva ngClass
+-->
+<h1>
+    <i class="glyphicon"  [ngClass]="{
+        'glyphicon-star-empty': !meuFavorito,
+        'glyphicon-star': meuFavorito
+    }" (click)="onClick()"></i>
+</h1>

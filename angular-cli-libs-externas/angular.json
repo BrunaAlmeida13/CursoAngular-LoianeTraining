@@ -1,13 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "7695c756-61e7-48f5-860d-5b3ee43d2f44",
-    "defaultCollection": "@angular-eslint/schematics"
+    "analytics": "d49fcdb4-4315-4301-8bcc-85ceb0dba736"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "diretivas": {
+    "angular-cli-libs-externas": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -21,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/diretivas",
+            "outputPath": "dist/angular-cli-libs-externas",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -32,12 +31,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "../diretivas/node_modules/bootstrap/dist/css/bootstrap.css"
+              "../angular-cli-libs-externas/node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [
-              "../diretivas/node_modules/bootstrap/dist/js/bootstrap.js",
-              "../diretivas/node_modules/tether/dist/js/tether.js",
-              "../diretivas/node_modules/jquery/dist/jquery.js"
+              "../angular-cli-libs-externas/node_modules/jquery/dist/jquery.js",
+              "../angular-cli-libs-externas/node_modules/tether/dist/js/tether.js",
+              "../angular-cli-libs-externas/node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {
@@ -77,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "diretivas:build:production"
+              "browserTarget": "angular-cli-libs-externas:build:production"
             },
             "development": {
-              "browserTarget": "diretivas:build:development"
+              "browserTarget": "angular-cli-libs-externas:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "diretivas:build"
+            "browserTarget": "angular-cli-libs-externas:build"
           }
         },
         "test": {
@@ -107,18 +106,9 @@
             ],
             "scripts": []
           }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
-          }
         }
       }
     }
   },
-  "defaultProject": "diretivas"
+  "defaultProject": "angular-cli-libs-externas"
 }

@@ -1,0 +1,10 @@
+section {
+    background-color: gray;
+}
+
+section#sec2 {
+    padding-bottom: 177px;
+    padding-right: 15px;
+    padding-left: 10px;
+    padding-top: 50px;
+}

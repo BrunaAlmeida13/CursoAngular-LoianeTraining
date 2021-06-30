@@ -1,0 +1,6 @@
+<h5>Diretiva *ngFor</h5>
+
+<!--Dentro do ngFor também é possível declarar um índice (dentro do ngIniti())-->
+<ul>
+    <li *ngFor="let curso of cursos, let i = index">Curso: {{ i + 1 }} - {{ curso }}</li>
+</ul>

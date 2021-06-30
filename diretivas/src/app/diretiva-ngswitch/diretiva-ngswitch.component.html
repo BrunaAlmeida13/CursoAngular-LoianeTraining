@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand">Hidden brand</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+              <!--class.ative| class binding | essa parte é só para aplicar o css-->
+              <!--click é para passar a escutar um evento-->
+            <a class="nav-link" [class.ative]="aba == 'home'" (click)="aba = 'home'">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.ative]="aba == 'mapa'" (click)="aba = 'mapa'">Mapa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.ative]="aba == 'lista'" (click)="aba = 'lista'">Lista</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<div class="container" [ngSwitch]="aba">
+    <p *ngSwitchCase="'mapa'">Modo mapa ativado</p>
+    <p *ngSwitchCase="'lista'">Modo lista ativado</p>
+    <p *ngSwitchDefault="'home'">Home</p> <!--Modo default-->
+</div>

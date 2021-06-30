@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-diretiva-ngswitch',
   templateUrl: './diretiva-ngswitch.component.html',
-  styleUrls: ['./diretiva-ngswitch.component.css']
+  styleUrls: ['./diretiva-ngswitch.component.css'],
 })
 export class DiretivaNgswitchComponent implements OnInit {
 

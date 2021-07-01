@@ -1,1 +1,17 @@
-<p>exemplo-ng-content works!</p>
+<h1>Ng Content</h1>
+<!--
+    Normalmente para se passar o valor da variável do component.ts para o component.html, usa-se o decorator @Input property - property binding - . Já para passar conteúdo deve-se usar o ngContent
+-->
+<!--
+    Ex.: Quando se quer que o título seja dinâmico, usa-se a tag ng-content com um seletor, para o angular saber a diferença entre o que é título e conteúdo
+-->
+
+<!--
+    - Também cabe outras tags dentro do conteúdo
+    - Quando se passa dois conteúdos com a mesma classe, é concatenado
+-->
+<div class="panel panel-default">
+    <div class="panel-heading"><ng-content select=".titulo"></ng-content></div>
+    <div class="panel-body"> <ng-content select=".corpo"></ng-content> </div>
+</div>
+<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>

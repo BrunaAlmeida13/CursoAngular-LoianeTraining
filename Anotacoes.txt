@@ -257,4 +257,14 @@ AULA #18 7:05
         <template ngFor [ngForOf]="cursos" let-curso let-i="index">
             <li>{{ i + 1 }} - {{ curso }}</li>
         </template> 
-           
+
+>> ANOTAR SOBRE DIRETIVAS <<
+- diretiva de atributo: ElementRef
+
+> Criando uma diretiva, é como se fosse um component sem template. Então se trata apenas a parte lógica, a parte responsável pelo DOM
+- Se o dev sentir a necessidade, ele pode criar um diretório para guardar todas as diretivas, pippes
+- A diretiva também é declarada em declarators
+
+| Quando se quer descobrir o elemento DOM a modificar, o caminho pode ser achado no navegador |
+| usando F12, e dando um console.log() na variável que será usada para acesso desse elemento. |
+

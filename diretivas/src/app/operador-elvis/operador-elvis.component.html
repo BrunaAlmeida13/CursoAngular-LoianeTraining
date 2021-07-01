@@ -1,1 +1,12 @@
-<p>operador-elvis works!</p>
+<section id="opElvis">
+    <h5>Operador Elvis</h5>
+    <p>Descrição: {{ tarefa.desc }}</p>
+    <!--p>Responsável: {{ tarefa.responsavel.nome }} | não pode ler nome de null | </p-->
+    <!--p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : ''}}</p-->
+    
+    <!--
+    Operador Elvis (?), faz uma lógica parecida com a tag de cima, para saber se o objeto é null ou não, se for null ele apenas coloca '' | Não importa o tamanho do aninhamento dos objetos, colocando o operador Elvis, garante que a aplicação não irá travar
+    Ex.: Responsável: {{ tarefa.responsavel?.usuario?.nome }}
+    -->
+    <p>Responsável: {{ tarefa.responsavel?.nome }}</p>
+</section>

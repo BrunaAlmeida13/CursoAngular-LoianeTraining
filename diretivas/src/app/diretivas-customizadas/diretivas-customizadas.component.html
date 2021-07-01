@@ -7,6 +7,26 @@
 
 <p [highlight]="'red'" [defaultColor]="'grey'">Texto com highlight com cores customizadas</p>
 <!--Quando se usa o mesmo nome no selector e no @Input, o angular entende que se trata de um diretiva e de um property-->
+
+<div id="ngIfListaCursos">
+    <div *ngIf="mostrarCursos">
+        Lista de cursos aqui
+    </div>
+    <div *ngElse="mostrarCursos">
+        <p>Não existem cursos para serem listados</p>
+    </div>
+    
+    <button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button>
+</div>
+
+<br>
+<!--Aqui a diretiva está sendo desestruturada e mostrada na sua forma normal-->
+<template [ngElse]="mostrarCursos">
+    <div>
+        Não existem cursos para serem listados
+    </div>
+</template>
+
 <p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 <!--
     Diretivas de atributo, customizadas

@@ -23,7 +23,7 @@ export class CursosComponent implements OnInit {
     this.cursos = this.cursosService.getCursos()
 
     //Tem que inicializar a inscrição nesse evento para que esse component sempre possa ser notificado de qualquer mudança
-    this.cursosService.emitirCursoCriado.subscribe(curso => console.log(curso))
+    CursosService.criouNovoCurso.subscribe(curso => this.cursos.push(curso))
   }
 
 }

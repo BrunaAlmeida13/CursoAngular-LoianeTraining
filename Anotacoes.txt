@@ -299,3 +299,6 @@ AULA #18 7:05
 > Comunicação entre components usando services (broadcast de eventos)
  - Para fazer a comunicação dentro do component (.ts e .html), usa-se @Input e @Output
  - Para fazer a comunicação entre os components, usa-se o service
+ - Broadcast de eventos usa services e eventEmitter
+
+ ****Rever aulas de service****

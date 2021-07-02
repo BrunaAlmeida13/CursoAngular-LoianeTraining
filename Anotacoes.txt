@@ -78,7 +78,7 @@ ________________________
 //está recebendo um valor do component pai para o component filho
 @Input() 
 
-//expondo valores através de um evento
+//expondo valores através de um evento | serve para o component filho consiga passar informações ou eventos para o pai
 @Output
 
 > Ciclo de vida do component - Life Cycle Hooks
@@ -275,3 +275,27 @@ AULA #18 7:05
  - Os services também são úteis para que não haja repetição de código na aplicação
  //IMAGEM AULA#37 3:52
  - Também se pode ter classes utilitárias, que terão métodos utilitários, como métodos de formatação, de tradução etc 
+
+ > injeção de dependência
+  - O que é dependência?
+    - Para a classe1 funcionar, ela precisa de uma outra instância 
+    Ex. A classe CursosComponent tem uma dependência na classe CursosService.
+        Por isso tem que se instânciar a classe CursosService primeiro, para depois começar a usar a classe CursosComponent, ou seja, é necessário injetar a dependência nessa classe
+    //AULA #39 2:11   
+
+    >> Se a classeA tem dependência na classeB, então se instancía a classeB e injeta-se em instancia na classeA <<
+
+- Existem três maneiras de fazer a injeção de dependência
+-- construtores |USADO PELO ANGULAR 2|
+-- métodos setters
+-- Atributos
+
+> Escopo de serviços e módulos
+    (Singleton x várias instâncias)
+     L quando se tem apenas uma instancia para todos as classes
+- Para usar o service em todos os components declarados no módulo, então se coloca o service no provider do module
+- Para usar o service especificamente em um ou outro component, colocar o service no providers dentro do @Component
+
+> Comunicação entre components usando services (broadcast de eventos)
+ - Para fazer a comunicação dentro do component (.ts e .html), usa-se @Input e @Output
+ - Para fazer a comunicação entre os components, usa-se o service

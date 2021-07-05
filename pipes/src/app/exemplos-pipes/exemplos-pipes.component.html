@@ -1,0 +1,23 @@
+<h5>Exemplos de pipes</h5>
+
+<!--Dá pra fazer aninhamento de pipes: {{ livro.titulo | uppercase | lowercase }}-->
+<p>Título: {{ livro.titulo | uppercase | camelCase}}</p>
+<p>Estrelas: {{ livro.rating  | number:'2.1-2'}}</p>
+<p>Páginas: {{ livro.numeroPaginas  | number}}</p>
+<!--Mostrando o preço como moeda {{ livro.preco  | currency: 'BRL':true }}-->
+<p>Preço: {{ livro.preco}}</p> 
+<!--Para mostrar o nome do Mês (Jun), usa MMM | só pra número: MM-->
+<p>Data de lançamento: {{ livro.dataLancamento | date:'dd-MMM-yyyy'}}</p>
+<p>Url: {{ livro.url }}</p>
+<br>
+<p>Livro: {{ livro | json }}</p>
+<br>
+
+<!--input type="text" [(ngModel)]="filtro">
+
+<ul>
+    !--*ngFor="let liv of livros | filtroArray" Não deve ser usado filtro em arrays dessa forma--
+    <li *ngFor="let liv of livros | filtroArray:filtro" >
+        {{ liv }}
+    </li>
+</ul-->

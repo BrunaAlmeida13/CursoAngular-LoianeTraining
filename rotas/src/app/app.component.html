@@ -2,16 +2,20 @@
     <div class="nav-wrapper">
       <a  routerLink="" class="brand-logo">Rotas em Angular 2</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/cursos">Cursos</a></li>
+        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li routerLinkActive="active"><a routerLink="/cursos">Cursos</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/cursos', idCurso.value]">Curso com ID</a></li>
       </ul>
     </div>
   </nav>
 
-  <!--Essa classe container faz parte do materialize e aplica uma margem-->
-<div class="container">
+<!--RouterLinkActive é uma API que personaliza o link ativado (destaca o link, no menu, de acordo com a página atual)-->
 
+ <!--Essa classe container faz parte do materialize e aplica uma margem-->
+ <div class="container cnt">
+  <p>Entre com o ID do curso</p>
+  <input #idCurso>
+
+  <!--O component da rota é renderizado dentro dessa tag-->
+  <router-outlet></router-outlet>
 </div>
-
-<!--O component da rota é renderizado dentro dessa tag-->
-<router-outlet></router-outlet>

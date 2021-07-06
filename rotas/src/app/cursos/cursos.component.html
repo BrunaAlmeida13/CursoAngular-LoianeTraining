@@ -1,1 +1,9 @@
-<p>cursos works!</p>
+<div class="collection">
+    <!--Pra cada A se quer fazer o output do curso-->
+    <a class="collection-item" 
+    *ngFor="let curso of cursos" 
+    [routerLink]="['/cursos', curso.id]"
+    >
+        {{ curso.nome }}
+    </a>
+</div>

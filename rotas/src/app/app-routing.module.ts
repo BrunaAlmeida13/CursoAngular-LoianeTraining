@@ -8,7 +8,7 @@ import { CursosComponent } from './cursos/cursos.component';
 const APP_ROUTES: Routes = [
   { path: 'cursos', component: CursosComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent } //homePage
 ];
 
 //Essa variável é a que contém a definição e a configuração das rotas no projeto

@@ -1,0 +1,18 @@
+<!--O routerLink vai puxar dados de uma rota filha, portanto será renderizada na página atual-->
+<div class="row">
+    <div class="col s6">
+        <h4>Lista de Alunos</h4>
+        <div class="collection">
+            <a class="collection-item lista-aluno-cor"
+            *ngFor="let aluno of alunos"
+            [routerLink]="[aluno.id]">
+                {{ aluno.nome }}
+            </a>
+        </div>
+    </div>
+
+<!--para que as rotas filhas possam funcionar-->
+<div class= "col 6">
+    <router-outlet></router-outlet>
+</div>
+</div>

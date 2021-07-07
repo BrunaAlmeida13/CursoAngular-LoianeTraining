@@ -1,9 +1,13 @@
+<p>Lista de Cursos</p>
+<p>Página: {{ pagina }}</p>
 <div class="collection">
     <!--Pra cada A se quer fazer o output do curso-->
     <a class="collection-item" 
     *ngFor="let curso of cursos" 
-    [routerLink]="['/cursos', curso.id]"
-    >
+    [routerLink]="['/cursos', curso.id]" 
+    > <!--/cursos porque o método que busca os dados, está dentro do cursos.ts-->
         {{ curso.nome }}
     </a>
 </div>
+
+<button type="button" class="btn btn-outline-dark" (click)="proximaPagina()">Próxima página</button>

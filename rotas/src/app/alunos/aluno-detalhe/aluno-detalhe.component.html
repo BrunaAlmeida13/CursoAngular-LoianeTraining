@@ -1,0 +1,17 @@
+<h5>Detalhe do aluno</h5>
+
+<table id="mostrarDados">
+    <tr>
+        <td>ID:</td>
+        <td>Nome:</td>
+        <td>E-mail:</td>
+    </tr>
+    <tr>
+        <td>{{ aluno.id }}</td>
+        <td>{{ aluno.nome }}</td>
+        <td>{{ aluno.email }}</td>
+    </tr>
+</table>
+
+<a class="waves-effect waveslight btn" (click)="editarContato()">Editar</a>
+

@@ -6,9 +6,10 @@ import { CursosComponent } from './cursos.component';
 import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 
 const cursosRoutes: Routes = [
-  { path: 'cursos', component: CursosComponent },
-  { path: 'cursos/:id', component: CursoDetalheComponent },
-  { path: 'naoEncontrado', component: CursoNaoEcontradoComponent }
+  //Deixando cursos em branco, pois já está especificado em app-routing, no lazy load
+  { path: '', component: CursosComponent },
+  { path: 'naoEncontrado', component: CursoNaoEcontradoComponent }, //tem que vir primeiro por conta do hard coded, (pra n ter conflito com o id)
+  { path: ':id', component: CursoDetalheComponent }
 ];
 
 @NgModule({

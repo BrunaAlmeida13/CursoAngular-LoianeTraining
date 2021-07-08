@@ -34,7 +34,7 @@ export class CursoDetalheComponent implements OnInit {
         //router é um classe que cuida do redirecionamento através do código | ROTEAMENTO IMPERATIVO
         if(this.curso == null) {
           //Aqui também pode passar outra informação, se necessário, ex: (['/naoEcontrado', this.id])
-          this.router.navigate(['/naoEncontrado'])
+          this.router.navigate(['/cursos/naoEncontrado'])
         }
       }
     )

@@ -7,7 +7,7 @@ import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 
 //As rotas filhas servem para evitar repetição de código e para quando se quer renderizar o component pai e o component filho.
 const alunosRoutes: any = [
-    { path: 'alunos', component: AlunosComponent, children: [
+    { path: '', component: AlunosComponent, children: [
         { path: 'novo', component: AlunoFormComponent },
         { path: ':id', component: AlunoDetalheComponent },
         { path: ':id/editar', component: AlunoFormComponent }

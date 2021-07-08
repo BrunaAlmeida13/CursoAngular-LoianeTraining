@@ -1,1 +1,15 @@
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form onsubmit="event.preventDefault()" class="box">
+                    <h1>Login</h1>
+                    <input [(ngModel)]="usuario.nome" type="text" id="usuario" name="usuario" placeholder="Usuário"> 
+                    <input [(ngModel)]="usuario.senha" type="password" id="senha"  name="senha" placeholder="Senha">  
+                    <input type="submit" value="Login" (click)="fazerLogin()">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--dentro de usuário e senha: <input class="validate">-->

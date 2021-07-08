@@ -1,5 +1,8 @@
+import { AlunosGuard } from './guards/alunos.guard';
+import { CursosGuard } from './guards/cursos.guard';
 import { NgModule, Component, ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 //import { CursoNaoEcontradoComponent } from './cursos/curso-nao-econtrado/curso-nao-econtrado.component';
 import { HomeComponent } from './home/home.component';
@@ -8,11 +11,19 @@ import { LoginComponent } from './login/login.component';
 //import { CursoDetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';
 
 const appRoutes: Routes = [
-  //{ path: 'cursos', component: CursosComponent },
-  //{ path: 'cursos/:id', component: CursoDetalheComponent },
+  /*Fazendo configuração do carregamento sob demanda*/
+  { path: 'cursos',
+    loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule), 
+    canActivate: [AuthGuard],
+    canActivateChild: [CursosGuard] },
+  { path: 'alunos', 
+    loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule), canActivate: [AuthGuard],
+    canActivateChild: [AlunosGuard]  },
   { path: 'login', component: LoginComponent },
   //{ path: 'naoEncontrado', component: CursoNaoEcontradoComponent },
-  { path: '', component: HomeComponent } //homePage
+  //{ path: 'cursos', component: CursosComponent },
+  //{ path: 'cursos/:id', component: CursoDetalheComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard]  } //homePage
 ];
 /*
 path - Qual o caminho para determinado component

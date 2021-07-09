@@ -14,10 +14,10 @@ export class AuthService {
 
   //Ajuda para validar o tipo de dado que se está passando, e também ajuda no intellicense do próprio editor de texto 
   fazerLogin(usuario: Usuario) {
-    if(usuario.nome === 'usuario@email.com' && usuario.senha === '123456'){
+    if(usuario.nome === 'usuario@email.com' && usuario.senha === '1'){
       this._usuarioAutenticado = true
 
-      //Quando o usuário estiver autenticado, antes de mudar a rota, pega-se a a variável mostrarMenuEmitter e emitir o valor de true, mostrará o menu
+      //Quando o usuário estiver autenticado, antes de mudar a rota, pega-se a a variável mostrarMenuEmitter e se emitir o valor de true, mostrará o menu
       this.mostrarMenuEmitter.emit(true)
 
       this.router.navigate(['/']) //se usuário estiver correto, será redirecionado para a homepage

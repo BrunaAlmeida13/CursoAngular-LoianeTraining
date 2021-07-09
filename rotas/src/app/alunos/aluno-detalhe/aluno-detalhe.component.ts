@@ -1,7 +1,9 @@
-import { AlunosService } from './../alunos.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { AlunosService } from './../alunos.service';
+import { Aluno } from '../aluno';
 
 @Component({
   selector: 'app-aluno-detalhe',
@@ -10,7 +12,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AlunoDetalheComponent implements OnInit, OnDestroy {
 
-  aluno: any
+  aluno!: Aluno;
   inscricao: Subscription = new Subscription()
 
   constructor(
@@ -20,12 +22,24 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.inscricao = this.route.params.subscribe(
+    //Não precisa mais pegar o id da rota, pra depois carregar o aluno em service
+    /*this.inscricao = this.route.params.subscribe(
       (params: any) => {
         let id= params['id'];
         this.aluno = this.alunosService.getAluno(id);
       }
-    )  
+    ) */ 
+
+      console.log('ngOnInit: AlunoDetalheComponent')
+
+    //Devido ao resolver, pode pegar o aluno direto
+    /*Também será pego a rota, só que no lugar de acessar os parâmetros, pega-se o atributo data que são os dados fornecidos | E como o resolver retorna um observable/promisses, pode-se fazer um subscribe*/
+    this.inscricao = this.route.data.subscribe(
+      (info) => {
+        console.log('Recebendo o obj Aluno do resolver')
+        this.aluno = info.aluno
+      }
+    )
   }
 
   ngOnDestroy() {

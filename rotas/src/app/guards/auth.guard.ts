@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService } from '../login/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from '../login/auth.service';
   providedIn: 'root'
 })
 //O que faz de fato ser um guardador de rotas, é implementar a CanActivate, que faz a classe poder ativar
-export class AuthGuard implements CanActivate{
+export class AuthGuard implements CanActivate, CanLoad {
 
   constructor(
     private authService: AuthService,
@@ -23,6 +23,14 @@ export class AuthGuard implements CanActivate{
     //Recebe a rota e o estado da rota
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): Observable<boolean> | boolean { //retorno observable com boo ou boolean
+    
+    console.log('AuthGuard')
+    return this.verificarAcesso()
+  }
+
+  //A lógica é a mesma do CanActivate. Será verificado se o usuário está autenticado, e se sim, return true, se não, return false e a mensagem de que o usuário não pode carregar o arquivo JS se ele não estiver logado
+  
+  private verificarAcesso() {
     if(this.authService.usuarioEstaAutenticado()) {
       return true //se o usuário puder usar a rota (se está autenticado)
     } 
@@ -31,6 +39,11 @@ export class AuthGuard implements CanActivate{
     this.router.navigate(['/login'])
 
     return false
+  }
+
+  canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    console.log('CanLoad: verificando se o usuário pode carregar o código do módulo')
+    return this.verificarAcesso()
   }
 }
 /*

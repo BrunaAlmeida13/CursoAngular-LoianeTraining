@@ -1,7 +1,24 @@
-.form-pos, .btn-posi {
+.form-pos, .btn-form {
     margin-top: 20px;
+}
+
+.btn-form {
+    background-color: rgb(230, 109, 213);
 }
 
 .input-color {
     background-color: antiquewhite;
+}
+
+.ng-invalid.ng-touched:not(form) {
+    border: 2px solid red;
+}
+
+.error-msg {
+    margin-top: -13px;
+    color: red;
+}
+
+.alert-danger {
+    height: 23px;
 }

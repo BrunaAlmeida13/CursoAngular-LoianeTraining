@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
+import { FormDebugComponent } from './../form-debug/form-debug.component';
 import { FormsModule } from '@angular/forms';
-import { DiretivaNgclassComponent } from './../../../../diretivas/src/app/diretiva-ngclass/diretiva-ngclass.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateFormComponent } from './template-form.component';
@@ -7,10 +8,14 @@ import { TemplateFormComponent } from './template-form.component';
 
 
 @NgModule({
-  declarations: [TemplateFormComponent],
+  declarations: [
+    TemplateFormComponent,
+    FormDebugComponent
+  ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClient
   ]
 })
 export class TemplateFormModule { }

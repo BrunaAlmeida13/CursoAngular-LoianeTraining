@@ -1,0 +1,19 @@
+<div style="margin-top: 20px;" *ngIf="form">
+<div>
+    Detalhes do Form
+</div>
+    <pre>
+    Form válido: {{ form.valid }}
+    </pre>
+    <pre>
+    Form submetido: {{ form.submitted }}
+    </pre>
+    <pre>
+    Valores: <br> {{ form.value | json}}
+    </pre>
+</div>
+
+<!--
+Como o form.value estará retornando um objeto, usa-se o pipe para apresentar os dados formatados
+Usando o ngIf para mostrar os dados, caso o formulário seja passado, ou seja, se ele existir
+-->

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormDebugComponent } from './../form-debug/form-debug.component';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -15,7 +15,7 @@ import { TemplateFormComponent } from './template-form.component';
   imports: [
     CommonModule,
     FormsModule,
-    HttpClient
+    HttpClientModule
   ]
 })
 export class TemplateFormModule { }

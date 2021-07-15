@@ -28,7 +28,7 @@
         <div class="form-group form-pos row"> <!--row é responsável para a rolagem dos outros campos-->
             <div class="col-md-3">
                 <label for="cep" class="control-label">CEP</label>
-                <input type="text" class="form-control input-color" id="cep" name="cep" ngModel required #cep="ngModel" (blur)="consultaCEP(cep.value)">
+                <input type="text" class="form-control input-color" id="cep" name="cep" ngModel required #cep="ngModel" (blur)="consultaCEP(cep.value, f)">
                 <div *ngIf="!cep.valid && cep.touched" class="alert alert-danger" role="alert">
                     <p class="error-msg">O CEP é obrigatório!</p>
                 </div>
